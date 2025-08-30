@@ -1,12 +1,18 @@
 ---
-
+const { href } = Astro.props;
 ---
 
-<li class="badge">
-	<slot />
-</li>
+<a href={href}>
+	<li class="badge">
+		<slot />
+	</li>
+</a>
 
 <style>
+	a {
+		color: white;
+		text-decoration: none;
+	}
 	.badge {
 		background: var(--bg-elev);
 		border: 1px solid var(--border);
@@ -16,5 +22,16 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease,
+			border-color 0.15s ease;
+	}
+	.badge:hover {
+		transform: translateY(-2px);
+		box-shadow:
+			0 6px 18px rgba(255, 255, 255, 0.25),
+			0 1px 0 rgba(255, 255, 255, 0.04) inset;
+		border-color: var(--accent);
 	}
 </style>
