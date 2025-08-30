@@ -1,0 +1,5 @@
+body {
+	font-family: "JetBrainsMono Nerd Font","FiraCode Nerd Font","Symbols Nerd Font","Nerd Font",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","DejaVu Sans Mono",monospace;
+	background: var(--bg, #0b0d12);
+}
+

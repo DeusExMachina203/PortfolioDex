@@ -1,0 +1,33 @@
+---
+export interface Props {
+	company: string;
+	role: string;
+	period: string;
+	summary?: string;
+}
+const { company, role, period, summary } = Astro.props;
+---
+
+<li>
+	<div class="role">{company} · {role}</div>
+	<div class="period">{period}</div>
+	{summary ? <p>{summary}</p> : null}
+</li>
+
+<style>
+	li {
+		background: var(--card);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: 14px;
+		display: grid;
+		gap: 6px;
+	}
+	.role {
+		font-weight: 600;
+	}
+	.period {
+		color: var(--muted);
+		font-size: 13px;
+	}
+</style>

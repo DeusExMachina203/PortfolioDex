@@ -1,0 +1,17 @@
+---
+export interface Props {
+	src: string;
+	class?: string;
+}
+import { readFileSync } from "node:fs";
+const { src, class: className } = Astro.props;
+let svg = "";
+try {
+	const url = new URL(`../../public${src}`, import.meta.url);
+	svg = readFileSync(url, "utf-8");
+} catch {}
+---
+
+<div class={className} set:html={svg} />
+
+

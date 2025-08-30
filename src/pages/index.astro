@@ -1,16 +1,251 @@
 ---
-
+import NavButton from "../components/NavButton.astro";
+import TechBadge from "../components/TechBadge.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ExperienceItem from "../components/ExperienceItem.astro";
+import "../styles/global.css";
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1"
+		/>
+		<meta name="color-scheme" content="dark" />
+		<title>Dex · Portfolio</title>
+		<style>
+			:root {
+				--bg: #0b0d12;
+				--bg-elev: #12151c;
+				--text: #e6e7eb;
+				--muted: #9aa0a6;
+				--accent: #c084fc;
+				--card: #0f1218;
+				--border: #232633;
+				--radius: 12px;
+				--shadow:
+					0 1px 0 rgba(255, 255, 255, 0.02) inset,
+					0 8px 24px rgba(0, 0, 0, 0.35);
+			}
+			* {
+				box-sizing: border-box;
+			}
+			html,
+			body {
+				height: 100%;
+			}
+			body {
+				margin: 0;
+				color: var(--text);
+				line-height: 1.5;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				opacity: 1;
+				transition: opacity 0.25s ease;
+			}
+			body[data-hide] {
+				opacity: 0;
+			}
+			.container {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: clamp(16px, 2.5vw, 32px);
+			}
+			.section {
+				margin-top: clamp(28px, 5vw, 56px);
+			}
+			.hero {
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+				align-items: flex-start;
+			}
+			h1 {
+				font-size: clamp(28px, 5vw, 44px);
+				margin: 0;
+				font-weight: 700;
+				letter-spacing: 0.2px;
+			}
+			.subtitle {
+				font-size: clamp(14px, 2.2vw, 18px);
+				color: var(--muted);
+				margin: 0;
+			}
+			nav {
+				display: flex;
+				gap: 12px;
+				flex-wrap: wrap;
+			}
+			h2 {
+				font-size: clamp(18px, 3vw, 24px);
+				margin: 0 0 12px;
+			}
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(
+					auto-fit,
+					minmax(220px, 1fr)
+				);
+				gap: 12px;
+			}
+			.badges {
+				list-style: none;
+				display: grid;
+				grid-template-columns: repeat(
+					auto-fit,
+					minmax(140px, 1fr)
+				);
+				gap: 10px;
+				padding: 0;
+				margin: 0;
+			}
+			.timeline {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				gap: 12px;
+			}
+			.small {
+				font-size: 13px;
+				color: var(--muted);
+			}
+			footer {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			@media (min-width: 900px) {
+				.hero {
+					flex-direction: row;
+					justify-content: space-between;
+					align-items: center;
+				}
+				.subtitle {
+					text-align: right;
+				}
+			}
+		</style>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body data-hide>
+		<main class="container">
+			<header class="hero section">
+				<div>
+					<h1>Dex</h1>
+					<p class="subtitle">
+						Software engineer focused on
+						fast, minimal, reliable
+						experiences
+					</p>
+				</div>
+				<nav>
+					<NavButton href="#tech"
+						> Tech</NavButton
+					>
+					<NavButton href="#projects"
+						> Projects</NavButton
+					>
+					<NavButton href="#experience"
+						> Experience</NavButton
+					>
+				</nav>
+			</header>
+
+			<section id="tech" class="section">
+				<h2>Technologies</h2>
+				<ul class="badges">
+					<TechBadge>JavaScript</TechBadge>
+					<TechBadge>TypeScript</TechBadge>
+					<TechBadge>Astro</TechBadge>
+					<TechBadge>React</TechBadge>
+					<TechBadge>Node.js</TechBadge>
+					<TechBadge>Python</TechBadge>
+					<TechBadge>Go</TechBadge>
+					<TechBadge>Docker</TechBadge>
+					<TechBadge>Linux</TechBadge>
+					<TechBadge>Git</TechBadge>
+				</ul>
+			</section>
+
+			<section id="projects" class="section">
+				<h2>Projects</h2>
+				<div class="grid">
+					<ProjectCard
+						title="Project One"
+						desc="Brief description and impact"
+						href="#"
+						src={"/images/placeholder.svg"}
+					/>
+					<ProjectCard
+						title="Project Two"
+						desc="Brief description and impact"
+						href="#"
+						src={"/images/placeholder.svg"}
+					/>
+					<ProjectCard
+						title="Project Three"
+						desc="Brief description and impact"
+						href="#"
+						src={"/images/placeholder.svg"}
+					/>
+				</div>
+			</section>
+
+			<section id="experience" class="section">
+				<h2>Experience</h2>
+				<ul class="timeline">
+					<ExperienceItem
+						company="Company"
+						role="Role"
+						period="2023–Present"
+						summary="Impact summary in one line"
+					/>
+					<ExperienceItem
+						company="Company"
+						role="Role"
+						period="2021–2023"
+						summary="Impact summary in one line"
+					/>
+				</ul>
+			</section>
+
+			<footer class="section">
+				<p class="small">
+					© <span id="year"></span> Dex
+				</p>
+				<a class="small" href="#top">Back to top</a>
+			</footer>
+		</main>
+		<script>
+			const setVh = () => {
+				document.documentElement.style.setProperty(
+					"--vh",
+					`${window.innerHeight}px`,
+				);
+			};
+			setVh();
+			window.addEventListener("resize", setVh, {
+				passive: true,
+			});
+			const reveal = () => {
+				document.body.removeAttribute("data-hide");
+			};
+			if (document.readyState === "complete") {
+				reveal();
+			} else {
+				window.addEventListener("load", reveal, {
+					once: true,
+				});
+			}
+			const y = document.getElementById("year");
+			if (y) {
+				y.textContent = String(
+					new Date().getFullYear(),
+				);
+			}
+		</script>
 	</body>
 </html>

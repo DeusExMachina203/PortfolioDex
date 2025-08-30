@@ -1,0 +1,55 @@
+---
+const { title, href, desc, src } = Astro.props;
+---
+
+<article class="card">
+	<div class="media">
+		<img src={src} alt={desc} />
+	</div>
+	<h3>{title}</h3>
+	{desc ? <p>{desc}</p> : null}
+	<a href={href} target="_blank" rel="noopener">Open</a>
+</article>
+
+<style>
+	.card {
+		background: var(--card);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		box-shadow: var(--shadow);
+	}
+	.media {
+		border-radius: var(--radius);
+		overflow: hidden;
+	}
+	.media .svg {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16/9;
+	}
+	.card h3 {
+		margin: 0;
+		font-size: 16px;
+	}
+	.card p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 14px;
+	}
+	.card a {
+		align-self: flex-start;
+		margin-top: 2px;
+		padding: 8px 10px;
+		border-radius: 8px;
+		background: var(--bg-elev);
+		border: 1px solid var(--border);
+		color: var(--text);
+		text-decoration: none;
+		font-size: 13px;
+	}
+</style>
